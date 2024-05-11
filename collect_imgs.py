@@ -9,7 +9,8 @@ for directory in [CONSONANTS_DIR, VOWELS_DIR]:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-number_of_consonants = 19
+# 된소리 제외한 자음
+number_of_consonants = 14
 number_of_vowels = 17
 
 dataset_size = 100
@@ -44,8 +45,8 @@ if 'class_type' not in locals():
     exit()
 
 for j in range(number_of_classes):
-    if not os.path.exists(os.path.join(data_dir, str(j))):
-        os.makedirs(os.path.join(data_dir, str(j)))
+    if not os.path.exists(os.path.join(data_dir, '{}{}'.format(class_type[0], j))):
+        os.makedirs(os.path.join(data_dir, '{}{}'.format(class_type[0], j)))
 
     print(f'Collecting data for class {j}')
 
@@ -62,7 +63,7 @@ for j in range(number_of_classes):
         ret, frame = cap.read()
         cv2.imshow('frame', frame)
         cv2.waitKey(25)
-        cv2.imwrite(os.path.join(data_dir, str(j), '{}.jpg'.format(counter)), frame)
+        cv2.imwrite(os.path.join(data_dir, '{}'.format(class_type[0]) + str(j), '{}.jpg'.format(counter)), frame)
 
         counter += 1
 

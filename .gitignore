@@ -161,3 +161,6 @@ cython_debug/
 #.idea/
 
 data/
+/data.pickle
+/model.p
+/font/
